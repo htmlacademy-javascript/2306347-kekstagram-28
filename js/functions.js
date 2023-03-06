@@ -1,22 +1,31 @@
 //Функция для проверки длины строки
-const getStringLength = (testString, length) => (testString.length <= length);
-getStringLengt('проверяемая строка', 20);
+const getStringLength = (testString, length) => testString.length <= length;
+getStringLength('проверяемая строка', 20);
 
 //Функция для проверки, является ли строка палиндромом
-const getPalindrome = (string) => {
-  const equableString = string.toLowerCase().replaceAll(' ', '');
+const isReverseString = (string) => {
   let reverseString = '';
-  for (let i = equableString.length - 1; i >= 0; i--) {
-    reverseString += equableString.at(i);
+  for (let i = string.length - 1; i >= 0; i--) {
+    reverseString += string.at(i);
   }
-  return equableString === reverseString;
+  return reverseString;
 };
-getPalindrome('ДовОд');
+
+const isPalindrome = (string) => {
+  const newReverseString = string.toLowerCase().replaceAll(' ', '');
+  if (newReverseString === isReverseString(newReverseString)) {
+    return true;
+  }
+  return false;
+};
+
+isPalindrome('ДовОд');
+
 
 //Функция, которая принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа
 const elicitNumber = (string) => {
   let result = '';
-  for (i = 0; i < string.length; i++) {
+  for (let i = 0; i < string.length; i++) {
     if (!Number.isNaN(parseInt(string.at(i), 10))) {
       result += string.at(i);
     }
